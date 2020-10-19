@@ -11,7 +11,7 @@ const allowedSizes = ['x-small', 'small', 'default', 'large', 'x-large'] as cons
 type Size = typeof allowedSizes[number] | undefined
 
 // Props
-export function sizeProps (defaults: Partial<SizeProps> = { size: 'default' }) {
+export function makeSizeProps (defaults: Partial<SizeProps> = { size: 'default' }) {
   return {
     size: {
       type: String,
@@ -26,7 +26,7 @@ export function useSizeClasses (props: SizeProps) {
   const sizeClasses = computed(() => {
     if (!props?.size) return {}
 
-    return { [`v-size--${props.size}`]: true }
+    return `v-size--${props.size}`
   })
 
   return { sizeClasses }

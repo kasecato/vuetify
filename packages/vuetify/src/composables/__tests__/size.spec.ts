@@ -1,16 +1,16 @@
 import { mount } from '@vue/test-utils'
-import { sizeProps, useSizeClasses } from '../size'
+import { makeSizeProps, useSizeClasses } from '../size'
 
 describe('size', () => {
   it('should warn if value is incorrect', () => {
     const TestComponent = {
-      props: sizeProps(),
+      props: makeSizeProps(),
       template: '<div/>',
     }
 
     mount(TestComponent, {
       props: {
-        // @ts-ignore
+        // @ts-expect-error
         size: 'foo',
       },
     })
